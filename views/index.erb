@@ -1,3 +1,18 @@
-<p>
-  Welcome!
-</p>
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+<% message = "You are not logged in" %>
+<% unless email.nil? %>
+    <%message = email %>
+<% end %>
+  <h1>Welcome, <%= message %></h1>
+
+
+<a href="/register">Register</a>
+
+
+</body>
+</html>

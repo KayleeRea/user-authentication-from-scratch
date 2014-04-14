@@ -1,3 +1,7 @@
+Heroku production url: user-authentication-production.herokuapp.com
+Heroku staging url: user-authentication-staging.herokuapp.com
+Tracker Project url: https://www.pivotaltracker.com/n/projects/1060086
+
 # Sinatra template application
 
 This application can be used as a starting point for a [Postgres](http://www.postgresql.org/)

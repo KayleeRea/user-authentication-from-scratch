@@ -1,3 +1,22 @@
 body {
     background-color: orange;
+    position: relative;
+    text-align: center;
+}
+
+td  {
+    padding: 20px;
+    margin: 20px;
+    text-align: left;
+}
+
+table {
+    margin: auto;
+}
+
+h1 {
+    display: block;
+    margin: auto;
+    font-size: 50px;
+    padding-top: 40px;
 }
