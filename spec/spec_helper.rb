@@ -4,7 +4,7 @@ require_relative '../boot'
 require 'sequel'
 require 'lib/tasks/db'
 
-DB = Sequel.connect('postgres://gschool_user:password@localhost/authentication_test')
+
 
 RSpec.configure do |config|
   config.order = 'random'
