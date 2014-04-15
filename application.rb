@@ -1,5 +1,5 @@
 require 'sinatra/base'
-
+require 'bcrypt'
 class Application < Sinatra::Application
 
   enable :sessions
@@ -20,7 +20,8 @@ class Application < Sinatra::Application
   post '/' do
     email = params[:email]
     password = params[:password]
-    @users_table.insert(email: email, password: password)
+    hashed_password = BCrypt::Password.create(password)
+    @users_table.insert(email: email, password: hashed_password)
     session[:email] = email
     redirect '/'
   end
