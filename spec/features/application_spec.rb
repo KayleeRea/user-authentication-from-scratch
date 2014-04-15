@@ -1,11 +1,7 @@
 require 'spec_helper'
 require 'capybara/rspec'
 
-
-
 Capybara.app = Application
-
-
 
 feature 'Homepage' do
 
@@ -13,7 +9,7 @@ feature 'Homepage' do
     DB[:users].delete
   end
 
-  scenario 'User can Register and logout' do
+  scenario 'User can Register and logout and login again' do
     visit '/'
     click_on "Register"
     fill_in "email", with: "bob@gmail.com"
@@ -24,9 +20,9 @@ feature 'Homepage' do
     expect(page).to_not have_content("Welcome, bob@gmail.com")
     click_on "Login"
     fill_in "email", with: "bob@gmail.com"
-    fill_in "password", with: "kaylee"
+    fill_in "password", with: "1234"
     click_on "Login"
-    expect(page).to have_content "Welcome, bob@gmail.com"
+    expect(page).to have_content ("Welcome, bob@gmail.com")
   end
 
   scenario 'User cannot login if their email does not exist' do
@@ -42,9 +38,23 @@ feature 'Homepage' do
     fill_in "email", with: "jim@yahoo.com"
     fill_in "password", with: "pass"
     click_on "Login"
-    expect(page).to have_content "That user does not exist"
+    expect(page).to have_content "Email/Password is invalid"
     end
 
+  scenario 'User cannot sign in with an invalid email / password' do
+    visit '/'
+    click_on "Register"
+    fill_in "email", with: "dave@yahoo.com"
+    fill_in "password", with: "pass"
+    click_on "Register"
+    expect(page).to have_content "Welcome, dave@yahoo.com"
+    click_on "Logout"
+    expect(page).to_not have_content("Welcome, dave@yahoo.com")
+    click_on "Login"
+    fill_in "email", with: "dave@yahoo.com"
+    fill_in "password", with: "7890"
+    click_on "Login"
+    expect(page).to have_content "Email/Password is invalid"
+  end
 end
-
 

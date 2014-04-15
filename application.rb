@@ -40,20 +40,19 @@ class Application < Sinatra::Application
   post '/login' do
     user = @users_table.where(email: params[:email]).to_a
     if user.empty?
-      error = "That user does not exist"
+      error = "Email/Password is invalid"
       erb :login, locals: {error: error}
     else
       hashed_password = user.first[:password]
       given_password = params[:password]
       converted_password = BCrypt::Password.new(hashed_password)
-      if hashed_password == converted_password
+      if converted_password == given_password
         session[:email] = params[:email]
         redirect '/'
       else
-        error = ""
-        erb :index
+        error = "Email/Password is invalid"
+        erb :login, locals: {error: error}
       end
     end
-
   end
 end
