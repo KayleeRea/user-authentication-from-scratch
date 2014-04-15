@@ -1,5 +1,9 @@
-Heroku production url: user-authentication-production.herokuapp.com
-Heroku staging url: user-authentication-staging.herokuapp.com
+##Links to Production, Staging and Tracker Project
+
+Heroku production url: http://user-authentication-production.herokuapp.com
+
+Heroku staging url: http://user-authentication-staging.herokuapp.com
+
 Tracker Project url: https://www.pivotaltracker.com/n/projects/1060086
 
 # Sinatra template application
