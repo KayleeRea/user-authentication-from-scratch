@@ -7,7 +7,7 @@ class Application < Sinatra::Application
   def initialize(app=nil)
     super(app)
     @users_table = DB[:users]
- end
+  end
 
   get '/' do
     erb :index, locals: {email: session[:email]}
@@ -28,6 +28,29 @@ class Application < Sinatra::Application
 
   get '/logout' do
     session.clear
+    redirect '/'
+  end
+
+  get '/login' do
+    erb :login
+  end
+
+  post '/login' do
+    user = @users_table.where(email: params[:email]).to_a
+    if user.empty?
+      error = "That user does not exist"
+    else
+      hashed_password = user.first[:password]
+      given_password = params[:password]
+      converted_password = BCrypt::Password.new(hashed_password)
+      if hashed_password == converted_password
+        session[:email] = params[:email]
+        redirect '/'
+      else
+        error = ""
+        erb :index
+      end
+    end
     redirect '/'
   end
 end
