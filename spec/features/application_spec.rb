@@ -1,9 +1,18 @@
 require 'spec_helper'
 require 'capybara/rspec'
 
+
+
 Capybara.app = Application
 
+
+
 feature 'Homepage' do
+
+  before :each do
+    DB[:users].delete
+  end
+
   scenario 'User can Register and logout' do
     visit '/'
     click_on "Register"
@@ -19,6 +28,23 @@ feature 'Homepage' do
     click_on "Login"
     expect(page).to have_content "Welcome, bob@gmail.com"
   end
+
+  scenario 'User cannot login if their email does not exist' do
+    visit '/'
+    click_on "Register"
+    fill_in "email", with: "sara@yahoo.com"
+    fill_in "password", with: "pass"
+    click_on "Register"
+    expect(page).to have_content "Welcome, sara@yahoo.com"
+    click_on "Logout"
+    expect(page).to_not have_content("Welcome, sara@yahoo.com")
+    click_on "Login"
+    fill_in "email", with: "jim@yahoo.com"
+    fill_in "password", with: "pass"
+    click_on "Login"
+    expect(page).to have_content "That user does not exist"
+    end
+
 end
 
 

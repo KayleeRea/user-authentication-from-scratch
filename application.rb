@@ -10,6 +10,7 @@ class Application < Sinatra::Application
   end
 
   get '/' do
+    error = nil
     erb :index, locals: {email: session[:email]}
   end
 
@@ -32,13 +33,15 @@ class Application < Sinatra::Application
   end
 
   get '/login' do
-    erb :login
+    error = nil
+    erb :login, locals: {error: error}
   end
 
   post '/login' do
     user = @users_table.where(email: params[:email]).to_a
     if user.empty?
       error = "That user does not exist"
+      erb :login, locals: {error: error}
     else
       hashed_password = user.first[:password]
       given_password = params[:password]
@@ -51,6 +54,6 @@ class Application < Sinatra::Application
         erb :index
       end
     end
-    redirect '/'
+
   end
 end
