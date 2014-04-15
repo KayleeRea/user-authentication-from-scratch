@@ -6,13 +6,16 @@
 <body>
 <% message = "You are not logged in" %>
 <% unless email.nil? %>
-    <%message = email %>
+  <% message = "Welcome, #{email}" %>
 <% end %>
-  <h1>Welcome, <%= message %></h1>
+<h1><%= message %></h1>
 
-
-<a href="/register">Register</a>
-
-
+<% if email.nil? %>
+  <a href="/register">Register</a>
+  <a href="/login">Login</a>
+<% else %>
+  <a href="/logout">Logout</a>
+  <a href="/">View all users</a>
+<% end %>
 </body>
 </html>

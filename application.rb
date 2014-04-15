@@ -14,7 +14,6 @@ class Application < Sinatra::Application
   end
 
   get '/register' do
-    session.clear
     erb :register
   end
 
@@ -23,6 +22,11 @@ class Application < Sinatra::Application
     password = params[:password]
     @users_table.insert(email: email, password: password)
     session[:email] = email
+    redirect '/'
+  end
+
+  get '/logout' do
+    session.clear
     redirect '/'
   end
 end

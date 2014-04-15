@@ -1,6 +1,5 @@
 body {
     background-color: orange;
-    position: relative;
     text-align: center;
 }
 
@@ -15,8 +14,12 @@ table {
 }
 
 h1 {
-    display: block;
     margin: auto;
     font-size: 50px;
     padding-top: 40px;
+}
+
+a {
+    margin: 50px;
+    padding-top: 50px;
 }
