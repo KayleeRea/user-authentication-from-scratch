@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
 
-</head>
-<body>
 <% message = "You are not logged in" %>
 <% unless email.nil? %>
   <% message = "Welcome, #{email}" %>
@@ -17,5 +12,4 @@
   <a href="/logout">Logout</a>
   <a href="/">View all users</a>
 <% end %>
-</body>
-</html>
+
