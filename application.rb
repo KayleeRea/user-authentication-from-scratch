@@ -9,6 +9,12 @@ class Application < Sinatra::Application
     @users_table = DB[:users]
   end
 
+  def passwords_not_equal?(password, user)
+    hashed_password = user[:password]
+    converted_password = BCrypt::Password.new(hashed_password)
+    converted_password != password
+  end
+
   get '/' do
     user = @users_table.where(id: session[:id]).first
     unless user.nil?
@@ -43,21 +49,14 @@ class Application < Sinatra::Application
   end
 
   post '/login' do
-    user = @users_table.where(email: params[:email]).to_a
-    if user.empty?
+    given_password = params[:password]
+    user = @users_table.where(email: params[:email]).first
+    if  user.nil? || passwords_not_equal?(given_password, user)
       error = "Email/Password is invalid"
       erb :login, locals: {error: error}
     else
-      hashed_password = user.first[:password]
-      given_password = params[:password]
-      converted_password = BCrypt::Password.new(hashed_password)
-      if converted_password == given_password
-        session[:id] = user.first[:id]
-        redirect '/'
-      else
-        error = "Email/Password is invalid"
-        erb :login, locals: {error: error}
-      end
+      session[:id] = user[:id]
+      redirect '/'
     end
   end
 
