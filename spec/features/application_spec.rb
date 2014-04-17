@@ -76,6 +76,8 @@ feature 'Homepage' do
     fill_in "password", with: "pass"
     click_on "Register"
     expect(page).to_not have_content("View all users")
+    visit '/users'
+    expect(page).to have_content("You do not have access, get out!")
   end
 end
 

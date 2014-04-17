@@ -64,8 +64,13 @@ class Application < Sinatra::Application
   end
 
   get '/users' do
-    user = @users_table.where(id: session[:id])
-    email = user.first[:email]
-    erb :users, locals: {email: email}
+    user = @users_table.where(id: session[:id]).first
+    #sometimes user is nil
+    if user && user[:admin]
+      email = user[:email]
+      erb :users, locals: {email: email}
+    else
+      erb :get_out
+    end
   end
 end
