@@ -15,13 +15,16 @@ class Application < Sinatra::Application
     converted_password != password
   end
 
+  def find_user_in_database(id)
+    @users_table.where(id: session[:id]).first
+  end
+
   get '/' do
-    user = @users_table.where(id: session[:id]).first
+    user = find_user_in_database(session[:id])
     unless user.nil?
       email = user[:email]
       admin = user[:admin]
     end
-
     erb :index, locals: {id: session[:id], email: email, admin: admin}
   end
 
@@ -61,7 +64,7 @@ class Application < Sinatra::Application
   end
 
   get '/users' do
-    user = @users_table.where(id: session[:id]).first
+    user = find_user_in_database(session[:id])
     if user && user[:admin]
       email = user[:email]
       erb :users, locals: {email: email}
