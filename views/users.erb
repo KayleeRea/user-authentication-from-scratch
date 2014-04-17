@@ -7,11 +7,11 @@
   <h1>Users</h1>
 <table class="user_table">
   <tr>
-    <td>ID</td>
-    <td>Email</td>
+    <td class="i">ID</td>
+    <td class="i">Email</td>
   </tr>
   <% DB[:users].each do |user| %>
-  <tr>
+  <tr class="j">
     <td><%= user[:id]%></td>
     <td><%= user[:email]%></td>
   </tr>

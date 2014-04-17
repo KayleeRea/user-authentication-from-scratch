@@ -32,7 +32,6 @@ a {
 
 .user_table tr td {
   border: 1px solid black;
-  background: lightgrey;
 }
 
 .home_link {
@@ -55,3 +54,14 @@ a {
     margin-top: 40px;
 }
 
+.i {
+    background-color: dimgray;
+}
+
+.j:nth-child(even) {
+    background-color: darkgray;
+}
+
+.j:nth-child(odd) {
+    background-color: lightgrey;
+}
