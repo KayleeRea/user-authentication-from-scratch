@@ -29,16 +29,23 @@ class Application < Sinatra::Application
   end
 
   get '/register' do
-    erb :register
+    error = nil
+    erb :register, locals: {error: error}
   end
 
   post '/' do
     email = params[:email]
     password = params[:password]
-    hashed_password = BCrypt::Password.create(password)
-    id = @users_table.insert(email: email, password: hashed_password)
-    session[:id] = id
-    redirect '/'
+    if password.length < 3
+      error = "Password cannot be less than 3 characters"
+      erb :register, locals: {error: error}
+    else
+      hashed_password = BCrypt::Password.create(password)
+      id = @users_table.insert(email: email, password: hashed_password)
+      session[:id] = id
+      redirect '/'
+    end
+
   end
 
   get '/logout' do

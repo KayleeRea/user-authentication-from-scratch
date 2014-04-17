@@ -55,6 +55,12 @@ feature 'Homepage' do
     expect(page).to have_content("You do not have access, get out!")
   end
 
+  scenario 'User cannot register if their password is less than 3 characters' do
+    visit '/'
+    register_user("short@yahoo.com", "12")
+    expect(page).to have_content("Password cannot be less than 3 characters")
+  end
+
   def register_user(email, password)
     click_on "Register"
     fill_in "email", with: email

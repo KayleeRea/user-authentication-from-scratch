@@ -1,5 +1,9 @@
 
 <h1>Register</h1>
+
+<% unless error.nil? %>
+  <p class="error"><%= error %></p>
+<%  end  %>
 <form action="/" method="post">
   <table>
   <tr>
