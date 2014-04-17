@@ -10,8 +10,6 @@ class Application < Sinatra::Application
   end
 
   get '/' do
-    #if the user is an admin, set admin = true else false
-
     user = @users_table.where(id: session[:id]).first
     unless user.nil?
       email = user[:email]
@@ -65,7 +63,6 @@ class Application < Sinatra::Application
 
   get '/users' do
     user = @users_table.where(id: session[:id]).first
-    #sometimes user is nil
     if user && user[:admin]
       email = user[:email]
       erb :users, locals: {email: email}
