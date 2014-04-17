@@ -28,3 +28,28 @@ a {
 .error {
     color: red;
 }
+
+.user_table tr td {
+  border: 1px solid black;
+  background: lightgrey;
+}
+
+.home_link {
+    float: left;
+}
+
+.welcome {
+    float: right;
+}
+
+.table {
+    clear:both;
+    text-align: left;
+    margin-left: 0px;
+    padding: 30px;
+}
+
+.table table {
+    margin-left: 0px;
+    margin-top: 40px;
+}

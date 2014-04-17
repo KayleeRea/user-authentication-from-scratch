@@ -10,8 +10,15 @@ class Application < Sinatra::Application
   end
 
   get '/' do
-    error = nil
-    erb :index, locals: {email: session[:email]}
+    #if the user is an admin, set admin = true else false
+
+    user = @users_table.where(id: session[:id]).first
+    unless user.nil?
+      email = user[:email]
+      admin = user[:admin]
+    end
+
+    erb :index, locals: {id: session[:id], email: email, admin: admin}
   end
 
   get '/register' do
@@ -22,8 +29,8 @@ class Application < Sinatra::Application
     email = params[:email]
     password = params[:password]
     hashed_password = BCrypt::Password.create(password)
-    @users_table.insert(email: email, password: hashed_password)
-    session[:email] = email
+    id = @users_table.insert(email: email, password: hashed_password)
+    session[:id] = id
     redirect '/'
   end
 
@@ -47,12 +54,18 @@ class Application < Sinatra::Application
       given_password = params[:password]
       converted_password = BCrypt::Password.new(hashed_password)
       if converted_password == given_password
-        session[:email] = params[:email]
+        session[:id] = user.first[:id]
         redirect '/'
       else
         error = "Email/Password is invalid"
         erb :login, locals: {error: error}
       end
     end
+  end
+
+  get '/users' do
+    user = @users_table.where(id: session[:id])
+    email = user.first[:email]
+    erb :users, locals: {email: email}
   end
 end

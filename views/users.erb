@@ -1,0 +1,20 @@
+<nav>
+<p class="home_link"><a href="/">Home</a></p>
+<p class="welcome">Welcome, <%= email %>       |<a href="/logout">logout</a></p>
+</nav>
+
+<div class="table">
+  <h1>Users</h1>
+<table class="user_table">
+  <tr>
+    <td>ID</td>
+    <td>Email</td>
+  </tr>
+  <% DB[:users].each do |user| %>
+  <tr>
+    <td><%= user[:id]%></td>
+    <td><%= user[:email]%></td>
+  </tr>
+    <% end %>
+</table>
+</div>
