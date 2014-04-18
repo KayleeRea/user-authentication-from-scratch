@@ -79,4 +79,8 @@ class Application < Sinatra::Application
       erb :get_out
     end
   end
+
+  get '/bogus1' do
+    erb :bogus1
+  end
 end

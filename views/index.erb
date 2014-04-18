@@ -1,20 +1,48 @@
+<header>
+  <div id="header_content">
+    <img src="images/knockknock-logo.png"/>
+  </div>
+</header>
+<nav>
+  <div id="nav_content">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/">Register</a></li>
+      <li><a href="/">Login</a></li>
+      <li><a href="/">Logout</a></li>
+    </ul>
+  </div>
+</nav>
 
-<% message = "You are not logged in" %>
-<% unless id.nil? %>
-  <% message = "Welcome, #{email}" %>
-<% end %>
+<div id="champagne">
+</div>
+
+<div id="euphoria">
+</div>
+
+<div id="message">
+  <% message = "You are not logged in" %>
+  <% unless id.nil? %>
+    <% message = "Welcome, #{email}" %>
+  <% end %>
+  <h1><%= message %></h1>
+</div>
 
 
 
-<h1><%= message %></h1>
-
+<div id="links">
 <% if id.nil? %>
   <a href="/register">Register</a>
   <a href="/login">Login</a>
 <% else %>
   <a href="/logout">Logout</a>
   <% if admin %>
-  <a href="/users">View all users</a>
+    <a href="/users">View all users</a>
   <% end %>
 <% end %>
+</div>
+
+<footer>
+  <a href="/bogus1">Check This Out!</a>
+</footer>
 
