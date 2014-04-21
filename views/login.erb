@@ -1,4 +1,18 @@
+<header>
+  <div id="header_content">
+    <img src="images/knockknock-logo.png"/>
+  </div>
+</header>
+<nav>
+  <div id="nav_content">
+  </div>
+</nav>
 
+<div id="champagne">
+</div>
+
+<div id="euphoria">
+</div>
 <h1>Login</h1>
 
 <% unless error.nil? %>
@@ -8,15 +22,15 @@
   <table>
     <tr>
       <td>Email</td>
-      <td><input type="text" name="email"></td>
+      <td clsss="input"><input type="text" name="email" STYLE="background-color: darkgrey"></td>
     </tr>
     <tr>
       <td>Password</td>
-      <td><input type="password" name="password"></td>
+      <td><input type="password" name="password" STYLE="background-color: darkgrey"></td>
     </tr>
     <tr>
       <td></td>
-      <td><input type="submit" value="Login"></td>
+      <td><input class="button" type="submit" value="Login"></td>
     </tr>
   </table>
 </form>

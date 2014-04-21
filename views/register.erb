@@ -1,22 +1,36 @@
+<header>
+  <div id="header_content">
+    <img src="images/knockknock-logo.png"/>
+  </div>
+</header>
+<nav>
+  <div id="nav_content">
+  </div>
+</nav>
 
-<h1>Register</h1>
+<div id="champagne">
+</div>
+
+<div id="euphoria">
+</div>
+<h1 id="register_page">Register</h1>
 
 <% unless error.nil? %>
   <p class="error"><%= error %></p>
-<%  end  %>
+<% end %>
 <form action="/" method="post">
   <table>
-  <tr>
-  <td>Email</td>
-  <td><input type="text" name="email"></td>
-  </tr>
-  <tr>
-    <td>Password</td>
-    <td><input type="password" name="password"></td>
-  </tr>
-  <tr>
-    <td></td>
-    <td><input type="submit" value="Register"></td>
-  </tr>
+    <tr>
+      <td>Email</td>
+      <td><input type="text" name="email" STYLE="background-color: darkgrey"></td>
+    </tr>
+    <tr>
+      <td>Password</td>
+      <td><input type="password" name="password" STYLE="background-color: darkgrey"></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><input class="button" type="submit" value="Register"></td>
+    </tr>
   </table>
 </form>

@@ -83,4 +83,12 @@ class Application < Sinatra::Application
   get '/bogus1' do
     erb :bogus1
   end
+
+  get '/bogus2' do
+    erb :bogus2
+  end
+
+  get '/bogus3' do
+    erb :bogus3
+  end
 end

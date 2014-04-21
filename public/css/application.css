@@ -1,5 +1,5 @@
 body {
-    font-family: 'Spinnaker', sans-serif;;
+    font-family: 'Original Surfer', cursive;
     background-color: #83AF9B;
     text-align: center;
     color: white;
@@ -34,7 +34,7 @@ a:hover {
 }
 
 .error {
-    color: red;
+    color: #FE4365;
 }
 
 .user_table tr td {
@@ -100,11 +100,44 @@ nav {
     font-weight: bold;
     color: #fff;
     padding-bottom: 20px;
+    padding-right: 30px;
+    padding-left: 30px;
     display: block;
     text-decoration: none;
     float:right;
-    border-left: 1px solid #FE4365;
-    border-right: 1px solid #FE4365;
+
+}
+
+.button {
+    border-top: 1px solid #f797b7;
+    background: #FC9D9A;
+    background: -webkit-gradient(linear, left top, left bottom, from(#FE4365), to(#FC9D9A));
+    background: -webkit-linear-gradient(top, #FE4365, #FC9D9A);
+    background: -moz-linear-gradient(top,#FE4365, #FC9D9A);
+    background: -ms-linear-gradient(top, #FE4365, #FC9D9A);
+    background: -o-linear-gradient(top, #FE4365, #FC9D9A);
+    padding: 5px 10px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+    -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+    box-shadow: rgba(0,0,0,1) 0 1px 0;
+    text-shadow: rgba(0,0,0,.4) 0 1px 0;
+    color: white;
+    font-size: 14px;
+    font-family: Georgia, serif;
+    text-decoration: none;
+    vertical-align: middle;
+}
+.button:hover {
+    border-top-color: #C8C8A9;
+    background: #C8C8A9;
+    color: black;
+}
+.button:active {
+    border-top-color: #C8C8A9;
+    background: #C8C8A9;
 }
 
 
@@ -115,6 +148,7 @@ nav {
 
 #message {
     clear: both;
+    padding-bottom: 30px;
 }
 
 #champagne {
@@ -130,7 +164,20 @@ nav {
 }
 
 footer {
-    margin-top: 100px;
-    text-align: left;
+    margin-top: 170px;
+    text-align: center;
+}
+
+#register_page {
+    padding-bottom: 20px;
+}
+
+#bogus {
+   text-align: left;
+   padding-left: 30px;
+}
+
+.input {
+    ;
 }
 
